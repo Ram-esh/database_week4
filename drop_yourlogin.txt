@@ -1,0 +1,16 @@
+ --@E:\Ram_Esh\drop_yourlogin.txt
+ 
+--DROP TABLE create_18413696.txt;
+--deleting the constraints of the all tables
+ALTER TABLE sites
+DROP CONSTRAINTS site_name;
+
+ALTER TABLE subject_areas 
+DROP CONSTRAINTS subject_name;
+
+ALTER TABLE trainers 
+DROP CONSTRAINTS t_firstname;
+
+ALTER TABLE students 
+DROP CONSTRAINTS gender;
+

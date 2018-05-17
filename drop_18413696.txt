@@ -1,0 +1,73 @@
+--@E:\Ram_Esh\drop_18413696.txt
+
+
+--deleting the constraints of the all tables
+
+ALTER TABLE invoices
+DROP CONSTRAINT fk_i_students;
+
+ALTER TABLE invoices
+DROP CONSTRAINT fk_i_companies; 
+
+ALTER TABLE students 
+DROP CONSTRAINT pk_students;
+
+ALTER TABLE attendances
+DROP CONSTRAINT fk_a_course_runs; 
+
+ALTER TABLE attendences
+DROP CONSTRAINT fk_a_students; 
+
+ALTER TABLE course_runs
+DROP CONSTRAINT fk_cr_site_id;
+
+ALTER TABLE course_runs
+DROP CONSTRAINT fk_cr_courses;
+
+ALTER TABLE course_runs
+DROP CONSTRAINT fk_cr_trainers ;
+
+ALTER TABLE sites
+DROP CONSTRAINT pk_sites;
+
+ALTER TABLE courses 
+DROP CONSTRAINT fk_c_subject_areas;
+
+ALTER TABLE courses 
+DROP CONSTRAINT pk_courses;
+
+ALTER TABLE courses 
+DROP CONSTRAINT ck_duration;
+
+
+
+
+ALTER TABLE trainers 
+DROP CONSTRAINTS u_car_reg;
+
+ALTER TABLE trainers 
+DROP CONSTRAINT pk_trainers;
+
+
+ALTER TABLE subject_areas 
+DROP CONSTRAINT pk_subject_areas;
+
+
+--dropping the tables
+DROP TABLE invoices;
+DROP TABLE attendances;
+DROP TABLE students;
+DROP TABLE course_runs;
+DROP TABLE sites;
+DROP TABLE trainers;
+DROP TABLE courses;
+DROP TABLE subject_areas;
+
+
+
+
+
+
+PURGE RECYCLEBIN;
+
+

@@ -1,0 +1,94 @@
+
+/*
+Ramesh Kunwar
+18413696
+2018
+Database I
+RamKunwar
+5/7/2018
+*/
+--@E:\Ram_Esh\create_18413696.txt
+
+
+--creating the table sites.
+CREATE TABLE sites(
+site_id NUMBER(5),
+site_name VARCHAR2(20));
+
+
+ALTER TABLE sites ADD(
+location VARCHAR2(30));
+
+--creating the table subject_areas.
+CREATE TABLE subject_areas(
+subject_id NUMBER(10),
+subject_name VARCHAR2(20),
+description VARCHAR2(100));
+
+--creating the table trainers.
+CREATE TABLE TRAINERS(
+trainer_id NUMBER(5),
+t_firstname VARCHAR2(10),
+t_surname VARCHAR2(10),
+mentor_id NUMBER(5),
+contact_no VARCHAR2(15),
+rate VARCHAR2(4));
+trainer_id NUMBER(10),
+t_firstname VARCHAR2(20),
+t_surname VARCHAR2(20),
+mentor_id NUMBER(10),
+contact_no VARCHAR2(15),
+rate NUMBER(3));
+
+--creating the table students.
+CREATE TABLE STUDENTS(
+student_id NUMBER(5),
+st_fname VARCHAR2(15) NOT NULL,
+st_sname VARCHAR2(15),
+date_of_birth date,
+address VARCHAR2(20));
+
+--creating the table courses.
+CREATE TABLE courses(
+course_id NUMBER(5),
+course_title VARCHAR2(15),
+subject_id NUMBER(5),
+duration NUMBER(2),
+cost NUMBER(10,2));
+
+--creating the table "course_runs".
+CREATE TABLE course_runs (
+running_id NUMBER(5),
+site_id NUMBER(5),
+course_id NUMBER(5),
+trainer_id NUMBER(5),
+start_date DATE);
+
+--creating the table "attendences".
+CREATE TABLE attendances (
+running_id NUMBER(5),
+student_id NUMBER(5),
+amount_paid NUMBER(10,2));
+
+--creating the table "invoices".
+CREATE TABLE invoices(
+invoice_id NUMBER(5),
+company_id NUMBER(5),
+student_id NUMBER(5),
+billing_date DATE );
+
+--creating the table "companies".
+CREATE TABLE companies(
+company_id NUMBER(5),
+company_name VARCHAR2(20),
+address VARCHAR2 (20),
+contact_no VARCHAR2(15),
+no_of_emp NUMBER(5));
+
+
+
+
+
+
+
+

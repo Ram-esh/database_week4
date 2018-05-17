@@ -1,0 +1,152 @@
+--@E:\Ram_Esh\alters_18413696.txt
+
+
+--altering "sites" table location column VARCHAR2 length.
+ALTER TABLE sites MODIFY (
+location VARCHAR2(40));
+
+
+--altering trainers table contact_no column to NOT NULL. 
+ALTER TABLE trainers MODIFY(
+contact_no VARCHAR2(15) NOT NULL);
+
+
+--altering sites table site_id to primary key constraints.
+ALTER TABLE sites 
+ADD CONSTRAINT pk_site 
+PRIMARY KEY (site_id);
+
+/*
+selecting column all the user constraints table
+SELECT * FROM user_constraints;
+displaying all the columns of user constraints table
+DESC user_constraints;
+
+selecting the contraint column name for user contraints table 
+SELECT constraints_name FROM user_constraints;
+
+displaying all the columns subjects_area table 
+desc subject_areas;
+*/
+
+--altering subject_areas table subject_id column to add constraints primary key
+ALTER TABLE SUBJECT_AREAS
+ADD CONSTRAINT pk_subject_areas 
+PRIMARY KEY (subject_id);
+
+
+--altering the trainers table trainer_id column to add constraints primary key
+ALTER TABLE trainers
+ADD CONSTRAINT pk_trainers 
+PRIMARY KEY (trainer_id);
+
+
+--altering the students table 
+ALTER TABLE students 
+ADD CONSTRAINT pk_students 
+PRIMARY KEY (student_id);
+
+--altering table students to drop column date of birth
+ALTER TABLE students 
+DROP (Date_of_Birth);
+
+--altering table students to add column dob
+ALTER TABLE students ADD(
+dob DATE);
+
+--altering table students to add car_reg column;
+ALTER TABLE trainers ADD(
+car_reg NUMBER(10));
+
+--altering table trainers column car_reg to add  unique constraint'car_reg'
+ALTER TABLE trainers 
+ADD CONSTRAINT u_car_reg 
+UNIQUE(car_reg);
+
+
+--adding primary key to courses table.
+ALTER TABLE courses 
+ADD CONSTRAINT pk_courses 
+PRIMARY KEY (course_id);
+
+--adding foreign key to the table "courses"
+ALTER TABLE courses 
+ADD CONSTRAINT fk_c_subject_areas 
+FOREIGN KEY (subject_id)
+REFERENCES subject_areas (subject_id);
+
+--adding primary key to the table "course_runs".
+ALTER TABLE course_runs 
+ADD CONSTRAINT pk_course_runs 
+PRIMARY KEY (running_id);
+
+--adding primary key to the table "attendences".
+ALTER TABLE attendances
+ADD CONSTRAINT pk_attendances
+PRIMARY KEY (running_id,student_id);
+
+--adding the foreign keys to the table "attendances".
+ALTER TABLE attendances 
+ADD CONSTRAINT fk_a_course_runs
+FOREIGN KEY (running_id)
+REFERENCES course_runs (running_id);
+ 
+ALTER TABLE attendances 
+ADD CONSTRAINT fk_a_students
+FOREIGN KEY (student_id)
+REFERENCES students (student_id);
+
+--Adding foreign keys to the table"course_runs".
+--The foreign keys present in the tables are;site_id,course_id and trainer_id.
+ALTER TABLE course_runs 
+ADD CONSTRAINT fk_cr_site_id
+FOREIGN KEY (site_id) 
+REFERENCES sites (site_id);
+ 
+ALTER TABLE course_runs 
+ADD CONSTRAINT fk_cr_courses
+FOREIGN KEY (course_id)
+REFERENCES courses (course_id);
+ 
+ALTER TABLE course_runs
+ADD CONSTRAINT fk_cr_trainers 
+FOREIGN KEY (trainer_id)
+REFERENCES trainers (trainer_id);
+
+--Check Comstraints
+--Altering the students table to check constraints"name".
+ALTER TABLE students
+ADD CONSTRAINT ck_st_fname 
+CHECK (st_fname=UPPER(st_fname));
+
+ALTER TABLE students
+ADD CONSTRAINT ck_st_lname 
+CHECK (st_sname=UPPER(st_sname));
+
+--Altering the courses table to check constraints"duration".
+ALTER TABLE courses 
+ADD CONSTRAINT ck_duration
+CHECK (duration IN ('3','5'));
+
+--Adding the primary key to the table "invoices".
+ALTER TABLE invoices 
+ADD CONSTRAINT pk_invoices 
+PRIMARY KEY(invoice_id); 
+
+
+--Adding the foreign keys  to the table "invoices".
+
+ 
+ALTER TABLE invoices 
+ADD CONSTRAINT fk_i_students 
+FOREIGN KEY (student_id) 
+REFERENCES students (student_id);
+
+ALTER TABLE invoices
+ADD CONSTRAINT fk_i_companies
+FOREIGN KEY (company_id)
+REFERENCES companies (company_id);
+
+
+
+
